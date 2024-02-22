@@ -1,0 +1,25 @@
+@model webui.Identity.User
+    <p>Hoşgeldin @Model.UserName Günün Fırsatlari icin <a href="#">tikla</a></p>
+    <p>@ViewBag.DtDay Gün @ViewBag.DtHour saattir Üyemizsiniz!</p>
+    <p id="current-time" style="position: absolute; bottom:3px; right:110px; top:70px; font-size:20px"></p>
+
+    @section Scripts
+    {
+        <script>
+
+            function updateTime() 
+            {
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0'); //!! padStart(2,'0')
+                const seconds = now.getSeconds().toString().padStart(2, '0');
+                document.getElementById('current-time').textContent = `${hours}:${minutes}:${seconds}`;
+            }
+
+            updateTime();
+            setInterval(updateTime, 1000);
+    
+        </script>
+    
+    }
+

@@ -1,0 +1,55 @@
+@{
+    Layout=null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <partial name="_head">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/Game_B.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <partial name="_nav">
+    </header>
+
+    <div class="btn_start">
+        <button class="btn btn-warning btn-lg">Start Game</button>
+    </div>
+
+    <div class="card game_box" id="gameBCard">
+        <header class="card-header">
+            <p class="title" style="text-align: center;">Word Game</p>
+        </header>
+        <section class="card-body">
+            
+            <div class="words">
+                <span><div class="container" style="display: flex; justify-items: center; gap: 8px; flex-wrap: wrap;" ></div></span>
+            </div>
+            <div class="input" style=" display: flex; align-items: center; justify-content: center;">
+                <div class="text" >
+                    <input  type="text" id="input" autocomplete="off">
+                </div> 
+             </div>     
+            <div class="point" style="display: flex; justify-items:center;">
+                <p>puan: </p>
+                <p id="point"></p>
+            </div>
+            <div class="counter" style="display: flex; justify-items:center;">
+                <p>sayac: </p>
+                <p id="counter">20</p>
+            </div>
+                 
+        </section>
+    </div>
+    
+
+    <script src="~/js/GameB.js"></script>
+    <script src="~/js/GameB-Counter.js"></script>
+    <script src="~/js/themeMode.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

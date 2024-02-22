@@ -1,0 +1,71 @@
+@model RoleManagerPackageViewModel
+
+<style>
+  td,th{
+    text-align: center;
+  }
+  a{
+    color:white;
+    text-decoration: none;
+  }
+  a:hover{
+    color: white;
+  }
+</style>
+
+<table class="table table-bordered">
+  <thead>
+
+    <tr>
+        <th colspan="3">ROLE LIST</th>
+    </tr>
+
+    <tr>
+      <th scope="col" class="my-4">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+    @if(Model.RoleList!=null)
+    {
+        @foreach(var role in Model.RoleList){
+        
+        <tr>
+          <th scope="row">@role.Id</th>
+          <td>@role.Name</td>
+
+          <td >
+
+          <button class="btn btn-primary">      <a asp-controller="Admin" asp-action="RoleEdit" asp-route-id="@role.Id"> Edit </a>   </button>
+          <button class="btn btn-danger ms-1">  <a asp-controller="Admin" asp-action="RoleDelete" asp-route-id="@role.Id"> Delete </a>   </button>
+          
+          </td>
+        </tr>
+
+        }
+    }
+
+  </tbody>
+</table>    
+<form asp-controller="Admin" asp-action="RoleManager" method="post">
+
+
+    <label for="text"><p>Name</p></label>
+    <input type="text" asp-for="@Model.RoleViewModel.Name" value="">
+
+    <button type="submit" >Add Role</button> 
+    <a asp-controller="Admin" asp-action="UserList" class="ms-4" style="text-decoration: underline; color:rgb(73, 73, 241);"> -UserList </a>
+    <br>
+    <span class="text-danger ms-5 " style="font-size: 12px;" asp-validation-for="@Model.RoleViewModel.Name" ></span>
+
+
+</form>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>

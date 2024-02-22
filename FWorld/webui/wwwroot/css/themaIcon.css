@@ -1,0 +1,14 @@
+.icon-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+#themaicon {
+    color: #ffffff;
+    font-size: 1.2em;
+    border: none; /* Butonun içindeki ikonun kenarlık (border) özelliğini sıfırla */
+    background-color: transparent; /* Butonun içindeki ikonun arka plan rengini sıfırla */
+}

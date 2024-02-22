@@ -1,0 +1,78 @@
+@model List<webui.Identity.User>
+@using webui.Identity
+@inject UserManager<User> _userManager;
+
+<p>@ViewBag.UserCount Kayit Bulundu..</p>
+
+<style>
+  td,th{
+    text-align: center;
+  }
+  a{
+    color:white;
+    text-decoration: none;
+  }
+  a:hover{
+    color: white;
+  }
+</style>
+
+<table class="table table-bordered table-responsive">
+  <thead>
+
+    <tr>
+        <th colspan="7">USER LIST</th>
+    </tr>
+
+    <tr>
+      <th scope="col" style="color:red;"><a asp-controller="Admin" asp-action="RoleManager" style="color: red;"> Role </a></th>
+
+      <th scope="col" class="my-4">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col"></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(var user in Model){
+      <tr>
+          @foreach(var role in await _userManager.GetRolesAsync(user))
+          {
+
+            if(role == "Admin")
+            {
+              <th scope="row" style="color: rgb(74, 214, 19);">@role</th>
+              <th scope="row">*</th>
+              <td>@user.Name</td>
+              <td>*</td>
+              <td>@user.UserName</td>
+              <td>*</td>
+
+
+                         
+            }
+            else
+            {
+              <th scope="row" style="color: aqua;">@role</th>
+              <th scope="row">@user.Id</th>
+              <td>@user.Name</td>
+              <td>@user.Surname</td>
+              <td>@user.UserName</td>
+              <td>@user.Email</td>
+
+              <td>
+
+                <button class="btn btn-primary ">  <a asp-controller="Account" asp-action="Details" asp-route-id="@user.Id"> Details </a>   </button>      
+                <button class="btn btn-danger ms-2 ">  <a asp-controller="Admin" asp-action="UserDelete" asp-route-id="@user.Id"> Delete </a>   </button>
+  
+              </td>
+            }
+           
+          }
+        </tr>
+    }
+  </tbody>
+</table>    

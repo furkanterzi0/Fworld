@@ -1,0 +1,79 @@
+@{
+    string userId = null;
+}
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" id="f">FWorld</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+
+                    @if(User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link " asp-controller="Admin" asp-action="Page" style="color: rgb(10, 145, 39) ;">Admin</a>
+                        </li>
+                    }
+                    
+                    <li class="nav-item">
+                        <a class="nav-link " asp-controller="Home" asp-action="Index" >Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Arcade" asp-action="Game_A">GAME-A</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  asp-controller="Arcade" asp-action="Game_B">GAME-B</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item " style="position: absolute; left: 50%; top:30%;">
+                        <button type="submit" class="icon-button" aria-label="Toggle Dark Mode" id="icon-button">
+                            <i class="fa-solid fa-circle-half-stroke" id="themaicon"></i>
+                        </button>
+
+                    </li>
+                </ul>
+                @if(User.Identity.IsAuthenticated)
+                {
+                    @using Microsoft.AspNetCore.Identity
+                    @using webui.Identity
+                    @inject UserManager<User> UserManager // injectttt sekli //
+                    userId = (await UserManager.GetUserAsync(User)).Id;    
+
+                    <ul class="navbar-nav flex-grow-1 justify-content-end me-5" style="position: absolute; right:50px">
+                        <li class="nav-item" style="position: relative;">
+                            <div class="dropdown">
+                                <button id="userDropDown" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa-solid fa-user" style="color: white; margin-right: 5px;"></i>@User.Identity.Name
+                                </button>
+                            
+                                <div id="userDropDown" class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="width: 1px; color:red;">
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="Page" asp-route-id="@userId">Page</a>
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="Details" asp-route-id="@userId" >Details</a>
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="Logout">Exit</a>
+                                </div>
+                                
+                            </div>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+                    <ul class="navbar-nav flex-grow-1 justify-content-end me-5">
+                    <li class="nav-item" style="">
+                        <a class="nav-link " asp-area="" asp-controller="Account" asp-action="Login" >Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                    </li>
+                    
+                </ul>
+                }
+                
+            </div>
+        </div>
+    </nav>

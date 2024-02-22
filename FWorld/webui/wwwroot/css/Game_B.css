@@ -1,0 +1,43 @@
+body{
+    background-color: rgb(177, 174, 174);
+}
+.btn_start,
+.game_box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.game_box.active {
+    opacity: 1;
+    pointer-events: auto;
+
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.game_box {
+    width: 550px;
+
+    transform: translate(-50%, -50%) scale(0.7);
+    transition: all 0.3s ease;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.true{
+    color: green !important;
+
+}
+.false{
+    color: red !important;
+
+}
+.marker{
+    background-color: rgb(129, 123, 123);
+}
+
+
+
+

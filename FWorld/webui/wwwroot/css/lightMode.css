@@ -1,0 +1,73 @@
+body{
+    background-color: rgb(207, 201, 201) !important;
+    transition: background-color 2s ease;
+
+}
+p{
+    color:black !important;
+    transition: color 2s ease;
+
+}
+h1{
+    color: black !important;
+    transition: color 2s ease;
+
+}
+#themaicon{
+    color: black !important;
+    transition: color 2s ease;
+
+}
+#f{
+    color: black !important;  
+    transition: color 2s ease;
+}
+#gameBCard{
+    background-color: rgb(235, 229, 229) !important;
+    transition: background-color 2s ease;
+
+}   
+#loginRegisterCard{
+    background-color: #c09d9d !important;
+    transition: background-color 2s ease;
+
+}
+#detailCard{
+    background-color: #c09d9d !important;
+    transition: background-color 2s ease;
+
+}
+#detailCardString{
+    color: white !important;
+    transition: color 2s ease;
+
+}
+#userDropDown{
+    background-color: #c09d9d !important;
+    transition: background-color 2s ease;
+
+}
+#userDropDown a{
+    color: white!important;
+    transition: color 2s ease;
+
+}
+#userDropDown a:hover{
+    color: #234c9e !important;
+    transition: color 2s ease;
+
+}
+th{
+    color: black;
+    transition: color 2s ease;
+
+}
+td{
+    color: black;
+    transition: color 2s ease;
+
+}
+.table {
+    border: 2px solid black; 
+    transition: border 2s ease;
+}
